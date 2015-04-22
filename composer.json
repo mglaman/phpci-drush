@@ -1,5 +1,5 @@
 {
-  "name"             : "mglaman/PHPCI-Drush",
+  "name"             : "mglaman/phpci-drush",
   "description"      : "Adds Drush to PHPCI",
   "minimum-stability": "stable",
   "type"             : "library",
