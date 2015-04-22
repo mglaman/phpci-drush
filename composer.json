@@ -3,7 +3,9 @@
   "description"      : "Adds Drush to PHPCI",
   "minimum-stability": "stable",
   "type"             : "library",
-
+  "require": {
+    "drush/drush": "dev-master"
+  },
   "extra": {
     "phpci": {
       "pluginNamespace": "mglaman\\PhpciPlugins\\",
