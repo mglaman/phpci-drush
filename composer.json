@@ -1,10 +1,14 @@
 {
-  "name"             : "mglaman/phpci-drush",
-  "description"      : "Adds Drush to PHPCI",
+  "name": "mglaman/phpci-drush",
+  "description": "Adds Drush to PHPCI",
   "minimum-stability": "stable",
-  "type"             : "library",
+  "type": "library",
+  "license": "MIT",
   "require": {
     "drush/drush": "dev-master"
+  },
+  "autoload": {
+    "psr-4": { "mglaman\\PhpciPlugins\\": "src" }
   },
   "extra": {
     "phpci": {
