@@ -16,6 +16,7 @@ class DrushPlugin implements Plugin
 {
     protected $phpci;
     protected $build;
+    protected $log;
     protected $command;
     protected $options;
     protected $arguments;
@@ -47,11 +48,47 @@ class DrushPlugin implements Plugin
             $this->command = $options['command'];
         }
         if (isset($options['arguments'])) {
-            $this->arguments = $options['arguments'];
+            $this->arguments = $this->formatArguments($options['arguments']);
         }
         if (isset($options['options'])) {
-            $this->options = $options['options'];
+            $this->options = $this->formatOptions($options['options']);
         }
+    }
+
+
+    /**
+     * Formats the arguments passed to Drush.
+     *
+     * Some Drush commands accept a single argument or multiple. This allows
+     * us to define arguments as a single string or an array an format it.
+     *
+     * @param string|array $arguments
+     *
+     * @return string
+     */
+    protected function formatArguments($arguments)
+    {
+        if (is_array($arguments)) {
+            return implode(' ', $arguments);
+        } else {
+            return $arguments;
+        }
+    }
+
+    /**
+     * Formats the array of options passed to Drush.
+     *
+     * @param array $options
+     *
+     * @return string
+     */
+    protected  function formatOptions(array $options)
+    {
+        $optionsString = '';
+        foreach ($options as $option) {
+            $optionsString .= '--' . $option . ' ';
+        }
+        return $optionsString;
     }
 
     /**
@@ -59,7 +96,7 @@ class DrushPlugin implements Plugin
      */
     public function execute()
     {
-        $curdir = getcwd();
+        // Make sure we run Drush from build directory.
         chdir($this->phpci->buildPath);
 
         $drush = $this->executable;
@@ -74,6 +111,6 @@ class DrushPlugin implements Plugin
           $this->command,
           $this->arguments,
           $this->options
-          );
+        );
     }
 }
