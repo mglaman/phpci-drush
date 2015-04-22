@@ -1,0 +1,15 @@
+{
+  "name"             : "mglaman/PHPCI-Drush",
+  "description"      : "Adds Drush to PHPCI",
+  "minimum-stability": "stable",
+  "type"             : "library",
+
+  "extra": {
+    "phpci": {
+      "pluginNamespace": "mglaman\\PhpciPlugins\\",
+      "suppliedPlugins": [
+        {"name": "Drush", "class": "DrushPlugin"}
+      ]
+    }
+  }
+}
