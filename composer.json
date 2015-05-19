@@ -5,7 +5,7 @@
   "type": "library",
   "license": "MIT",
   "require": {
-    "drush/drush": "dev-master"
+    "drush/drush": "7.0.0-rc2"
   },
   "autoload": {
     "psr-4": { "mglaman\\PhpciPlugins\\": "src" }
